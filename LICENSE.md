@@ -1,4 +1,4 @@
-Copyright 2020 Milton Reyes
+Copyright 2020 TECH787
 
 This license governs use of the accompanying software. If you use the software, you accept this license. If you do not accept the license, do not use the software.
 
