@@ -98,14 +98,9 @@ export const Login: React.FC<ILoginProps> = (props) => {
                         <OutlinedInput
                             id="email"
                             value={values.email}
-                            aria-describedby="email-txt"
                             labelWidth={140}
                             onChange={handleChange('email')}
-                            inputProps={{
-                                'aria-label': 'We\'ll never share your email.',
-                            }}
                         />
-                        <FormHelperText id="email-txt">We'll never share your email.</FormHelperText>
                     </FormControl>
                     <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                         <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
