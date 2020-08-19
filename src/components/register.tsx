@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Form, Container, Row, Col, Button } from 'react-bootstrap'
 
-export const Register: React.FC = () => {
+interface ISignupProps {
+    setView: (view: 'LOGIN' | 'SIGNUP' | 'HOME') =>  void
+}
+
+export const Register: React.FC<ISignupProps> = (props) => {
 
     const [inputUsername, setInputUsername] = useState('')
     const [inputEmail, setInputEmail] = useState('')
