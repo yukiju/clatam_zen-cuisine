@@ -1,23 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import { Form, Row, Col } from 'react-bootstrap'
+import { Form, 
+    //Row, 
+    //Col 
+} from 'react-bootstrap'
 import clsx from 'clsx'
 import {
     Container,
     Paper,
     FormControl,
-    TextField,
+    //TextField,
     InputLabel,
-    Input,
+    //Input,
     FormHelperText,
     OutlinedInput,
     CssBaseline,
     InputAdornment,
     IconButton,
-    Icon,
+    //Icon,
     Button,
     makeStyles
 } from '@material-ui/core'
 import { Visibility, VisibilityOff } from '@material-ui/icons'
+import * as authRemote from '../remote/auth'
 
 interface ISignupProps {
     setView: (view: 'LOGIN' | 'SIGNUP' | 'HOME') => void
@@ -53,10 +57,10 @@ export const Register: React.FC<ISignupProps> = (props) => {
 
     const classes = useStyles()
 
-    const [inputUsername, setInputUsername] = useState('')
-    const [inputPassword, setInputPassword] = useState('')
+    /*const [inputUsername, setInputUsername] = useState('')
+    const [inputPassword, setInputPassword] = useState('')*/
 
-    const [values, setValues] = React.useState({
+    const [values, setValues] = useState({
         username: '',
         email: '',
         password: '',
@@ -86,25 +90,41 @@ export const Register: React.FC<ISignupProps> = (props) => {
     useEffect(() => {
     }, [])
 
-    const loginCredentials = () => {
+    const username = values.username
+    const email = values.email
+    const password = values.password
+    const passwordVal = values.passwordVal
+    const firstName = values.firstName
+    const lastName = values.lastName
+
+    const signup = async () => {
+        if (password !== passwordVal) {
+            return
+        }
+        const payload = {username,email,password,firstName,lastName}
+        await authRemote.signupRequest(payload)
+        // Need to handle response
+    }
+
+    /*const loginCredentials = () => {
         const payload = {
             username: inputUsername,
             password: inputPassword
         }
-    }
+    }*/
 
-    {/*const [inputUsername, setInputUsername] = useState('')
+    /*const [inputUsername, setInputUsername] = useState('')
     const [inputEmail, setInputEmail] = useState('')
     const [inputPassword, setInputPassword] = useState('')
     const [inputFirstName, setInputFirstName] = useState('')
-const [inputLastName, setInputLastName] = useState('')*/}
+    const [inputLastName, setInputLastName] = useState('')*/
 
     useEffect(() => {
     }, []);
 
     // function where account is registered will be implemented
-    const registerAccount = () => {
-    }
+    /*const registerAccount = () => {
+    }*/
     // onClick should register account
 
     return (
@@ -203,6 +223,7 @@ const [inputLastName, setInputLastName] = useState('')*/}
                         variant="contained"
                         color="primary"
                         className={classes.button}
+                        onClick={() => signup()}
                     >SIGN UP</Button>
 
                 </Paper>

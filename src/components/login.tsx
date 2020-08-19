@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState} from 'react'
 import clsx from 'clsx'
 import './login.css'
 import { makeStyles } from '@material-ui/core/styles'
@@ -6,19 +6,23 @@ import {
     Container,
     Paper,
     FormControl,
-    TextField,
+    //TextField,
     InputLabel,
-    Input,
-    FormHelperText,
+    //Input,
+    //FormHelperText,
     OutlinedInput,
     CssBaseline,
     InputAdornment,
     IconButton,
-    Icon,
+    //Icon,
     Button
 } from '@material-ui/core'
 import { Visibility, VisibilityOff } from '@material-ui/icons'
-import { Form, Row, Col } from 'react-bootstrap'
+import { Form,
+     //Row, 
+     //Col
+} from 'react-bootstrap'
+import * as authRemote from '../remote/auth'
 
 interface ILoginProps {
     setView: (view: 'LOGIN' | 'SIGNUP' | 'HOME') => void
@@ -54,10 +58,10 @@ export const Login: React.FC<ILoginProps> = (props) => {
 
     const classes = useStyles()
 
-    const [inputUsername, setInputUsername] = useState('');
-    const [inputPassword, setInputPassword] = useState('');
+    /*const [inputUsername, setInputUsername] = useState('');
+    const [inputPassword, setInputPassword] = useState('');*/
 
-    const [values, setValues] = React.useState({
+    const [values, setValues] = useState({
         email: '',
         password: '',
         showPassword: false,
@@ -78,12 +82,21 @@ export const Login: React.FC<ILoginProps> = (props) => {
     useEffect(() => {
     }, [])
 
-    const loginCredentials = () => {
+        const email = values.email
+        const password = values.password
+
+    const login = async () => {
+        const credentials = {email, password}
+        await authRemote.loginRequest(credentials)
+        // Need to handle response
+    }
+    
+    /*const loginCredentials = () => {
         const payload = {
             username: inputUsername,
             password: inputPassword
         }
-    }
+    }*/
 
 
 
@@ -128,6 +141,7 @@ export const Login: React.FC<ILoginProps> = (props) => {
                         variant="contained"
                         color="primary"
                         className={classes.button}
+                        onClick={() => login()}
                     >SIGN IN</Button>
 
                 </Paper>

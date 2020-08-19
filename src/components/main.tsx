@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React
+//, { useState } 
+from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 //import NavBar from './navbar'
-import { Register } from './register'
-import { Login } from './login'
-import { Home } from './home'
+//import { Register } from './register'
+//import { Login } from './login'
+//import { Home } from './home'
 import AppBarComp from './appbar'
 
 
 
 export const MainComponent: React.FC = () => {
+
+    //const [view, setView] = useState<'LOGIN' | 'SIGNUP' | 'HOME'>('LOGIN')
    
     return (
         <div className="main-container">
@@ -26,7 +30,6 @@ export const MainComponent: React.FC = () => {
                             
                         </Route>
                         <Route path="/login">
-                        
                             {/*<Login setView={setView} />*/}
                         </Route>
                         <Route path="/register">

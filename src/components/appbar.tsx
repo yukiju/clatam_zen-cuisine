@@ -1,6 +1,6 @@
-import React, { useEffect,useState } from 'react'
+import React, { useState } from 'react'
 import { RouteComponentProps, withRouter } from 'react-router'
-import { Button, AppBar, Toolbar, IconButton, Menu, MenuItem, Typography, makeStyles } from '@material-ui/core'
+import { Button, AppBar, Toolbar, IconButton, Typography, makeStyles } from '@material-ui/core'
 import MenuIcon from '@material-ui/icons/Menu'
 import './navbar.css'
 import { Register } from './register'
